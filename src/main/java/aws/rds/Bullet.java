@@ -73,6 +73,7 @@ public class Bullet {
         if(x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) living = false;
     }
 
+    // TODO: Use only one rect for each bullet and tank
     public void collideWith(Tank tank) {
         if (this.group == tank.getGroup()) return;
         Rectangle rect1 = new Rectangle(this.x, this.y, WIDTH, HEIGHT);
