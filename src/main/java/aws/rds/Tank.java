@@ -6,9 +6,9 @@ import java.util.Random;
 public class Tank {
     private int x, y;
     private Dir dir = Dir.DOWN;
-    private static final int SPEED = 1;
-    public static int WIDTH = ResourceMgr.tankD.getWidth();
-    public static int HEIGHT = ResourceMgr.tankD.getHeight();
+    private static final int SPEED = 2;
+    public static int WIDTH = ResourceMgr.tankU.getWidth();
+    public static int HEIGHT = ResourceMgr.tankU.getHeight();
     private Random random = new Random();
     private Group group = Group.BAD;
 
@@ -108,6 +108,8 @@ public class Tank {
         int bX = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
         int bY = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
         tf.bullets.add(new Bullet(bX, bY, this.dir, this.group, this.tf));
+
+        if (this.group == Group.GOOD) new Thread(() -> new Audio("audio/tank_fire.wav").play()).start();
     }
 
     public void die() {
